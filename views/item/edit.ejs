@@ -1,0 +1,49 @@
+<%- include('../partials/header.ejs')%>
+    <link rel="stylesheet" type="text/css" href="/css/new.css">
+
+    <form method="POST" action="/items/<%=item.id%>?_method=PUT" enctype="multipart/form-data" class="user2-form">
+        <table>
+            <tr>
+                <td><label for="title">Title</label></td>
+                <td><input type="text" id="title" name="title" value="<%= item.title%>" required></td>
+            </tr>
+            <tr>
+                <label for="condition"> Condition:</label>
+                <select id="condition" name="condition">
+                    <option value="New">New</option>
+                    <option value="Like New">Like New</option>
+                    <option value="Decent">Decent</option>
+                    <option value="Poor">Poor</option>
+                </select>
+
+            </tr>
+
+            <li>
+
+                <label for="details">Artist:</label>
+                <input name="details" id="details" cols="60" rows="3" value="<%= item.details%>" required></input>
+            </li>
+
+            <tr>
+                <td> <label for="price">Price</label></td>
+                <td><input type="number" name="price" id="price" min="0.00" max="80" step=".01" value="<%=item.price%>"
+                        required></input></td>
+            </tr>
+
+            <tr>
+                <td><label for="images">Upload Image</label></td>
+                <td><input type="file" name="images" id="images" required></td>
+            </tr>
+
+            <tr>
+                <td colspan="2" class="align-right"><button>Submit</button></td>
+            </tr>
+
+
+
+        </table>
+
+    </form>
+
+
+    <%- include('../partials/footer.ejs')%>

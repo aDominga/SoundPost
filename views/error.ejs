@@ -1,0 +1,14 @@
+<%- include('./partials/header.ejs')%>
+    <!-- We Have two styles sheets so if css is an error at some point look at this -->
+    <link rel="stylesheet" type="text/css" href="/css/Bstyles.css">
+    <link rel="stylesheet" type="text/css" href="../css/Bstyles.css">
+
+
+    <h1 class="Error-Syn">
+        <%=Error.Status%> Error
+    </h1>
+    <p class="Error-Syn">
+        <%=error.message%>
+    </p>
+
+    <%- include('./partials/footer.ejs')%>

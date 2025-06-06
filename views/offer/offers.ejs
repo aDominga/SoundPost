@@ -1,0 +1,31 @@
+<%- include('../partials/header.ejs') %>
+<link rel="stylesheet" type="text/css" href="/css/BStyles.css">
+
+<table>
+    <tr class="tableHeader">
+        <th class="statusHead">Amount</th>
+        <th class="actionHead">Action</th>
+    </tr>
+
+    <% offers.forEach(offer => { %>
+        <tr class="trItem">
+            <td class="tdActive">
+                <span class="statusAct">$<%= offer.amount %></span>
+            </td>
+
+            <%if(offer.status != 'pending') {%>
+                <td class="tdActive">
+                    <span class="statusAct"><%= offer.status%></span>
+                </td>
+            <%} else { %>
+            <td>
+                <form action="/offers/<%= offer._id %>/accept" method="POST">
+                    <button type="submit" class="viewOfferButton">Accept Offer</button>
+                </form>
+            </td>
+        </tr>
+        <%}%>
+    <% }); %>
+</table>
+
+<%- include('../partials/footer.ejs') %>

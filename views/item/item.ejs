@@ -1,0 +1,64 @@
+<%- include('../partials/header.ejs')%>
+  <link rel="stylesheet" type="text/css" href="../css/infoStyles.css">
+
+
+  <div class="columns">
+    <div class="row">
+      <div class="column">
+        <img src="<%=item.images%>" alt="item1" class="imgitem">
+      </div>
+      <div class="column2">
+        <h2>
+          <%=item.title%>
+        </h2>
+        <p>Artist: <span>
+            <%=item.details%>
+          </span></p>
+        <p>Condition: <span>
+            <%=item.condition%>
+          </span></p>
+        <p>Price: $<span class="priceSpan">
+            <%=item.price%>
+          </span></p>
+        <p>Seller: <span>
+            <%=item.seller.firstName + " " + item.seller.lastName%>
+          </span></p>
+
+          
+            <% if(item.active){ %>
+              <p><span>
+
+
+
+               <form action='/items/<%= item._id %>/offers' method='POST'> <!--this used to be action='/items' -->
+              <input type="number" name="amount" id="amount" min="0.01" max="80" step=".01" for="amount"
+                      required></input>
+
+
+                      <button class="offerButton" name="name" value="submit" type="submit">Make an Offer</button>
+                    </span></p>  
+                    <% if(item.totalOffers > 0){ %>
+                    <p>Highest Offer: <span>
+                      <%=item.highestOffer%>
+                    </span></p>
+                    <% } %>
+
+
+                  </form>
+       
+          <p>Offers: <span>
+            
+            <%=item.totalOffers%>
+          </span></p>
+
+          <% } else { %>
+
+            <h3>Unfortunately, this item is no longer available</h3>
+
+            <%}%>
+
+      </div>
+    </div>
+  </div>
+
+  <%- include('../partials/footer.ejs')%>

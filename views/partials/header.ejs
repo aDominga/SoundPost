@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <!-- <link rel="stylesheet" type="text/css" href="/css/styles.css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+</head>
+
+<body>
+
+    <div class="topnav">
+        <a class="main" href="/">
+            <img src="/images/SoundPostLogoimage.png" alt="SOUND POST"></a>
+
+
+        <form class="searchForm">
+            <div class="seachbar">
+                <input for="search" type="text" name="search" class="searchB" placeholder="Search...">
+                <!-- <button type="submit" formmethod="GET" formaction="/items">Search</button> -->
+            </div>
+        </form>
+        <div class="navbuttons">
+
+
+            <%if(!user){%>
+                <a class="right-nav" href="/users/login">Login</a>
+                <a class="right-nav" href="/users/new">Sign up</a>
+                <%} else {%>
+                    <a class="right-nav" href="/users/logout">Logout</a>
+                    <a class="right-nav" href="/users/profile">Profile</a>
+                    <%}%>
+
+                        <a class="right-nav" href="/items/new">Sell</a>
+                        <a class="right-nav" href="/items">Browse</a>
+        </div>
+    </div>
+
+    <%if(errorMessages.length> 0) {
+        errorMessages.forEach(message => { %>
+        <div class="error">
+            <%= message %>
+        </div>
+        <%}); }%>
+
+            <%if(successMessages.length> 0) {
+                successMessages.forEach(message => { %>
+                <div class="success">
+                    <%= message %>
+                </div>
+                <%}); }%>

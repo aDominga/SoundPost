@@ -1,0 +1,23 @@
+<%- include('../partials/header.ejs')%>
+<link rel="stylesheet" type="text/css" href="/css/new.css">
+
+<div class="signTitle">BECOME A MEMBER</div>
+
+<form action = '/users' method = 'POST' class="user2-form">
+    <label class="forms" for="firstName">FIRST NAME</label>
+    <input type="text" id="firstName" name="firstName" class="firstInput" required >
+    
+    <label class="forms" for="lastName">LAST NAME</label></td>
+    <input type="text" id="lastName" name="lastName" class="lastInput" required></td>
+   
+    <label class="forms" for="email">EMAIL</label>
+    <input type="email" id="email" name="email" class="emailInput" required>
+    
+    <label class="forms" for="password">PASSWORD</label>
+    <input type="password" id="password" name="password" minlength="8" maxlength="64" class="passwordInput" required>
+
+    <input type="submit" value="Sign Up" class="SignSubmit">      
+</form>
+
+</div>
+<%- include('../partials/footer.ejs')%>

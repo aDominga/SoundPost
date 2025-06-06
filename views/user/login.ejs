@@ -1,0 +1,21 @@
+
+<%- include('../partials/header.ejs')%>
+<link rel="stylesheet" type="text/css" href="/css/new.css">
+
+<div class="signTitle">LOGIN</div>
+
+
+<!-- this might have to be /login instead play with it a little to see what works if error arises -->
+
+    <form action = '/users/login' method = 'POST' class="user2Log-form">
+        <label class="forms" for="email">EMAIL</label></td>
+        <input type="email" id="email" name="email" class="emailLogInput" required></td>
+           
+        <label  class="forms" for="password">PASSWORD</label>
+        <input type="password" id="password" name="password" class="passwordLogInput" required>
+           
+        <input type="submit" value="Login" class="logSubmit">     
+    </form>
+
+    </div>
+    <%- include('../partials/footer.ejs')%>

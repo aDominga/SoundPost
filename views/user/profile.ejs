@@ -1,0 +1,98 @@
+<%- include('../partials/header.ejs')%>
+<link rel="stylesheet" type="text/css" href="/css/BStyles.css">
+<h1 class="Welcome">Hey, <%=user.firstName + " " + user.lastName%> </h1>
+
+
+
+
+<table>
+    <tr class="tableHeader">
+        <th class="itemHead">Item</th>
+        <th class="statusHead">Status</th>
+        <th class="actionHead">Action</th>
+        <th class="actionHead">View Offer</th>
+
+
+    </tr>
+
+
+
+<% if(items.length) { %>
+
+    <p class="listings">You have the following listings</p>
+
+    <%items.forEach(item => {%>
+
+
+
+        <tr class="trItem">
+            <td><a href = "/items/<%=item.id%>" class="tableLink"><p><%=item.title%></p></a></td>
+            <td class="tdActive"><span class="statusAct">
+                <%  if (item.active === true ){ %>
+                    ACTIVE
+                <% } else { %>
+                    INACTIVE
+               <% } %>
+            </span>
+        </td>
+            <td>
+                <form>
+                <button type="submit" formmethod="GET" formaction="/items/<%= item.id %>/edit" class="edit"><ion-icon class="editIcon" name="create-outline"></ion-icon></button>
+                <button type="submit" formmethod="POST" formaction="/items/<%= item.id %>?_method=DELETE" class="edit"><ion-icon class="deleteIcon" name="trash-outline"></ion-icon></button>    
+            </form>
+            </td>
+            <td>
+
+                <% if (item.totalOffers > 0) { %>
+                                     <form>
+
+                <button type="submit" formmethod="GET" formaction="/items/<%= item.id %>/offers" class="viewOfferButton">View Offers</button>
+            </form>
+       <% } else {%>
+            <button class="noOffer">Offers</button>
+            <%}%>
+
+            </td>
+
+        </tr>
+
+
+
+
+
+        
+    <%});
+} else {%>
+    <p class="listings">You have no listings</p>
+<%}%>
+
+
+</table>
+<table>
+    <% if (offers.length) { %>
+    <tr class="tableHeader">
+        <th class="itemHead">Item</th>
+        <th class="statusHead">Status</th>
+        <th class="actionHead">Amount</th>
+    </tr>
+    <p class="listings">You have made the following offers</p>
+    <% offers.forEach(offer => { %>
+    <tr class="trItem">
+        <% if (offer.itemId) { %>
+        <td class="tableLink"><span><%= offer.itemId.title %></span></td>
+        <% } else { %>
+        <td class="tableLink"><span>Item Deleted</span></td>
+        <% } %>
+        <td class="tdActive"><span class="statusAct"><%= offer.status %></span></td>
+        <td class="tdActive"><span>$<%= offer.amount %></span></td>
+    </tr>
+    <% }); %>
+    <% } else { %>
+    <p class="listings">You have no offers</p>
+    <% } %>
+</table>
+
+
+
+<%- include('../partials/footer.ejs')%>
+
